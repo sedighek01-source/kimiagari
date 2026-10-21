@@ -1,0 +1,9 @@
+{
+  "appId": "com.kimiagari.app",
+  "appName": "کیمیاگری",
+  "webDir": "www",
+  "backgroundColor": "#1D2140",
+  "android": {
+    "allowMixedContent": false
+  }
+}
