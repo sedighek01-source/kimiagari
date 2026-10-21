@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1D2140">
+<title>کیمیاگری</title>
+</head>
+<body>
+<style>
+@font-face{font-family:'Vazirmatn';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/vazirmatn-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Vazirmatn';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/vazirmatn-arabic-400-normal.woff2) format('woff2');unicode-range:U+0600-06FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE80-FEFC}
+@font-face{font-family:'Vazirmatn';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/vazirmatn-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Vazirmatn';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/vazirmatn-arabic-500-normal.woff2) format('woff2');unicode-range:U+0600-06FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE80-FEFC}
+@font-face{font-family:'Vazirmatn';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/vazirmatn-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Vazirmatn';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/vazirmatn-arabic-700-normal.woff2) format('woff2');unicode-range:U+0600-06FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE80-FEFC}
+@font-face{font-family:'Aref Ruqaa';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/aref-ruqaa-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Aref Ruqaa';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/aref-ruqaa-arabic-700-normal.woff2) format('woff2');unicode-range:U+0600-06FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE80-FEFC}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+/* Layout: one phone-width column; ink-colored mission card is the single bold moment, verdigris marks growth, violet marks elixir */
+:root{
+  --bg:#EDEFF4; --surface:#F8F9FC; --ink:#1D2140; --muted:#5B617D; --line:#D5D9E6;
+  --accent:#1F7A6E; --on-accent:#FFFFFF; --accent-soft:#D5ECE7;
+  --elixir:#5B3FA0; --elixir-soft:#E5DEF5;
+  --hero-bg:#1D2140; --hero-fg:#F3F4FB; --hero-muted:#B4B9D6; --hero-btn:#F3F4FB; --hero-btn-fg:#1D2140; --hero-line:#3A3F6B;
+  --sky:#E1E8F3; --ground:#BBD8CD; --bark:#6C5B4F; --leaf:#2F8F7C;
+  --font-display:'Aref Ruqaa','Vazirmatn',Tahoma,serif;
+  --font-body:'Vazirmatn',Tahoma,system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#12142A; --surface:#1B1E3B; --ink:#ECEEF8; --muted:#9CA2C2; --line:#2D3153;
+    --accent:#4FC3B0; --on-accent:#0E2A27; --accent-soft:#1C3A3A;
+    --elixir:#B9A5F2; --elixir-soft:#2A2552;
+    --hero-bg:#2A2560; --hero-fg:#F1EFFC; --hero-muted:#B9B4E0; --hero-btn:#F1EFFC; --hero-btn-fg:#231E52; --hero-line:#4A4390;
+    --sky:#191D3E; --ground:#1D3838; --bark:#8B7867; --leaf:#4FC3B0;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12142A; --surface:#1B1E3B; --ink:#ECEEF8; --muted:#9CA2C2; --line:#2D3153;
+  --accent:#4FC3B0; --on-accent:#0E2A27; --accent-soft:#1C3A3A;
+  --elixir:#B9A5F2; --elixir-soft:#2A2552;
+  --hero-bg:#2A2560; --hero-fg:#F1EFFC; --hero-muted:#B9B4E0; --hero-btn:#F1EFFC; --hero-btn-fg:#231E52; --hero-line:#4A4390;
+  --sky:#191D3E; --ground:#1D3838; --bark:#8B7867; --leaf:#4FC3B0;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{
+  background:var(--bg); color:var(--ink); font-family:var(--font-body); font-size:15px; line-height:1.85;
+  padding-block:16px 110px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+button{font:inherit;color:inherit}
+#app{max-width:460px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;flex-direction:column;line-height:1.3}
+.brand b{font-family:var(--font-display);font-size:30px;font-weight:700;color:var(--accent)}
+.brand small{color:var(--muted);font-size:12px}
+.vial{display:flex;align-items:center;gap:10px;padding:6px 14px 6px 12px;border:1px solid var(--line);background:var(--surface);border-radius:999px}
+.vial svg{width:22px;height:22px;stroke:var(--elixir);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.vial .n{font-weight:700;font-size:17px;line-height:1.2;color:var(--elixir);font-variant-numeric:tabular-nums}
+.vial .l{font-size:11px;color:var(--muted);line-height:1.2}
+.vial .bar{width:54px;height:4px;border-radius:2px;background:var(--elixir-soft);overflow:hidden;margin-top:3px}
+.vial .bar i{display:block;height:100%;background:var(--elixir);border-radius:2px;transition:width .5s}
+.vial.bump{animation:bump .5s}
+@keyframes bump{40%{transform:scale(1.08)}}
+h1,h2,h3,p{margin:0}
+.greet{display:flex;flex-direction:column;gap:4px}
+.greet .hi{font-family:var(--font-display);font-size:34px;line-height:1.4}
+.greet .st{font-size:18px;font-weight:700}
+.greet .sub{color:var(--muted)}
+.hero{background:var(--hero-bg);color:var(--hero-fg);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.hero .lab{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:13px;color:var(--hero-muted)}
+.hero h2{font-size:22px;line-height:1.6;text-wrap:balance}
+.hero .meta{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:var(--hero-muted)}
+.hero p{color:var(--hero-fg)}
+.hero .why{border-top:1px solid var(--hero-line);padding-top:12px;font-size:14px;color:var(--hero-muted)}
+.hero .why b{display:block;color:var(--hero-fg);font-size:14px}
+.btn{min-height:48px;padding:0 22px;border-radius:12px;border:0;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-align:center}
+.btn:focus-visible,.row:focus-visible,.opt:focus-visible,.chip:focus-visible,.tab:focus-visible,.link:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.btn-primary{background:var(--accent);color:var(--on-accent)}
+.btn-hero{background:var(--hero-btn);color:var(--hero-btn-fg)}
+.btn-quiet{background:transparent;border:1px solid var(--line);color:var(--ink)}
+.btn-block{width:100%}
+.btn[disabled]{opacity:.5;cursor:default}
+.link{background:none;border:0;padding:4px 2px;color:var(--accent);font-weight:500;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+.sec{display:flex;flex-direction:column;gap:10px}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.sec-h h3{font-size:16px}
+.rows{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.row{display:flex;align-items:center;gap:12px;width:100%;min-height:56px;padding:8px 10px;background:transparent;border:0;border-bottom:1px solid var(--line);text-align:start;cursor:pointer;transition:background .25s,color .25s}
+.row .ic{font-size:20px;width:28px;text-align:center;flex:none}
+.row .tx{flex:1;min-width:0}
+.row .xp{color:var(--elixir);font-weight:700;font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.row .ck{width:24px;height:24px;border-radius:50%;border:2px solid var(--line);flex:none;display:grid;place-items:center;transition:all .25s}
+.row .ck svg{width:14px;height:14px;stroke:var(--on-accent);stroke-width:3;fill:none;opacity:0;transition:opacity .2s}
+.row.done{background:var(--accent-soft);color:var(--muted)}
+.row.done .tx{text-decoration:line-through;text-decoration-thickness:1px}
+.row.done .ck{background:var(--accent);border-color:var(--accent)}
+.row.done .ck svg{opacity:1}
+.row .del{color:var(--muted);font-size:20px;padding:0 6px;background:none;border:0;cursor:pointer}
+.add{display:grid;grid-template-columns:1fr auto auto;gap:8px;padding-top:10px}
+input,textarea,select{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-width:0;width:100%}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+select{width:auto}
+textarea{min-height:110px;resize:vertical;line-height:1.8}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);background:var(--surface);border-radius:14px}
+.stats>div{padding:14px 8px;text-align:center;display:flex;flex-direction:column;gap:2px}
+.stats>div+div{border-inline-start:1px solid var(--line)}
+.stats b{font-size:26px;line-height:1.2;font-variant-numeric:tabular-nums}
+.stats small{color:var(--muted);font-size:12px;line-height:1.5}
+.flame b{color:var(--accent)}
+.note{font-size:13px;color:var(--muted)}
+.world{border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.world svg{display:block;width:100%;height:auto}
+.ff{animation:ff 3.2s ease-in-out infinite}
+@keyframes ff{50%{opacity:.35}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.panel.soft{background:var(--accent-soft);border-color:transparent}
+.panel h2{font-size:20px;line-height:1.6}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;align-items:center;gap:12px;min-height:54px;padding:10px 14px;border:1px solid var(--line);background:var(--surface);border-radius:12px;text-align:start;cursor:pointer}
+.opt:hover{border-color:var(--accent)}
+.opt .dot{width:18px;height:18px;border-radius:50%;border:2px solid var(--muted);flex:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);cursor:pointer}
+.chip.on{background:var(--elixir-soft);border-color:var(--elixir);color:var(--elixir);font-weight:700}
+.chip.static{cursor:default;min-height:34px}
+.big{font-size:19px;font-weight:700;line-height:1.7}
+.quote{border-inline-start:3px solid var(--accent);padding-inline-start:12px;font-size:17px}
+.gain{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.gain b{color:var(--elixir);font-variant-numeric:tabular-nums}
+.vbar{display:flex;flex-direction:column;gap:4px}
+.vbar .h{display:flex;justify-content:space-between;gap:8px}
+.vbar .t{height:8px;background:var(--line);border-radius:4px;overflow:hidden}
+.vbar .t i{display:block;height:100%;background:var(--accent);border-radius:4px}
+.ins{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
+.ins li{padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.refl{padding:12px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.refl small{color:var(--muted)}
+.refl p{overflow-wrap:anywhere}
+.nav{position:fixed;inset-inline:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);padding:6px max(10px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(10px,env(safe-area-inset-left,0px));z-index:5}
+.nav .in{max-width:460px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.tab{background:none;border:0;border-radius:12px;min-height:54px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--muted);font-size:12px;cursor:pointer}
+.tab svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tab[aria-current="page"]{color:var(--accent);font-weight:700;background:var(--accent-soft)}
+.pop{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 70px);transform:translateX(-50%);background:var(--elixir);color:var(--surface);font-weight:700;padding:6px 16px;border-radius:999px;z-index:20;animation:rise 1.4s ease-out forwards;pointer-events:none}
+@keyframes rise{0%{opacity:0;transform:translate(-50%,10px)}15%{opacity:1}100%{opacity:0;transform:translate(-50%,-26px)}}
+.fade{animation:fade .35s ease-out}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div id="app" dir="rtl" lang="fa"></div>
+
+<script>
+(function(){
+var LS='kimiagari-v1';
+var app=document.getElementById('app');
+var VIRT={courage:{name:'شجاعت',icon:'🦁'},calm:{name:'آرامش',icon:'🌊'},curiosity:{name:'کنجکاوی',icon:'🔭'},kindness:{name:'مهربانی',icon:'🌿'}};
+var ORDER=['courage','calm','curiosity','kindness'];
+var MISSIONS=[
+ {id:'c1',v:'courage',lvl:1,title:'یک ترجیح ساده',short:'در یک انتخاب کوچک بگو «من ترجیح می‌دهم...»',why:'بیان ترجیح‌های کوچک، تمرینی برای واضح‌تر بیان کردن خواسته‌هاست.',text:'امروز در یک انتخاب ساده، مثل غذا، نوشیدنی یا مسیر، به جای اینکه بگویی «هر طور تو بخواهی»، بگو: «من ترجیح می‌دهم...»',min:5,xp:40},
+ {id:'c2',v:'courage',lvl:2,title:'یک خواسته کوچک',short:'یک خواسته کوچک خودت را واضح بیان کن.',why:'وقتی خواسته‌های کوچک را بگویی، گفتن خواسته‌های بزرگ‌تر آسان‌تر می‌شود.',text:'از یک نفر چیز کوچک و مشخصی بخواه که برای تو مهم است. مثلاً: «می‌شود صدا را کمی کم کنی؟» بدون توضیح اضافه و بدون عذرخواهی.',min:5,xp:40},
+ {id:'c3',v:'courage',lvl:3,title:'یک «نه» مؤدبانه',short:'به یک درخواست کوچک مؤدبانه نه بگو.',why:'نه گفتن به چیزهای کوچک، مرزهای تو را روشن‌تر می‌کند.',text:'اگر امروز کسی چیز کوچکی خواست که ظرفیتش را نداری، مؤدبانه و کوتاه بگو نه، بدون دلیل‌تراشی.',min:5,xp:40},
+ {id:'m1',v:'calm',lvl:1,title:'پنج دقیقه بی‌صفحه',short:'پنج دقیقه فقط به نفس‌هایت گوش بده.',why:'مکث کوتاه، به بدن و ذهن فرصت می‌دهد از شتاب روز پایین بیایند.',text:'یک جا بنشین، گوشی را کنار بگذار و پنج دقیقه فقط به نفس‌هایت گوش بده. فکرها که آمدند، بگذار بروند.',min:5,xp:40},
+ {id:'m2',v:'calm',lvl:2,title:'مکث پیش از پاسخ',short:'پیش از واکنش، سه نفس بکش.',why:'فاصله میان واکنش و پاسخ، جایی است که انتخاب شکل می‌گیرد.',text:'اولین بار که امروز چیزی اذیتت کرد، پیش از هر واکنشی سه نفس آرام بکش و بعد جواب بده.',min:3,xp:40},
+ {id:'m3',v:'calm',lvl:3,title:'قدم‌زدن بی‌مقصد',short:'ده دقیقه بدون مقصد قدم بزن.',why:'حرکت بی‌هدف به ذهن اجازه می‌دهد خودش را مرتب کند.',text:'ده دقیقه بدون مقصد و بدون هدفون قدم بزن. هر جا دلت خواست بایست و نگاه کن.',min:10,xp:40},
+ {id:'k1',v:'curiosity',lvl:1,title:'سه چیز تازه',short:'سه چیز تازه در مسیر همیشگی‌ات پیدا کن.',why:'دیدن دوباره‌ی چیزهای آشنا، کنجکاوی را بیدار می‌کند.',text:'در مسیری که هر روز می‌روی، سه چیز پیدا کن که تا حالا ندیده بودی.',min:5,xp:40},
+ {id:'k2',v:'curiosity',lvl:2,title:'یک سؤال واقعی',short:'از یک نفر چیزی بپرس که واقعاً نمی‌دانی.',why:'سؤال واقعی، رابطه و یادگیری را همزمان عمیق‌تر می‌کند.',text:'از یک نفر درباره چیزی بپرس که واقعاً نمی‌دانی، و تا آخر به جوابش گوش بده.',min:5,xp:40},
+ {id:'k3',v:'curiosity',lvl:3,title:'ده دقیقه یادگیری',short:'یک چیز کوچک تازه را ده دقیقه امتحان کن.',why:'شروع‌های کوچک، ترس از ناشی‌بودن را کم می‌کنند.',text:'یک چیز کوچک و تازه را ده دقیقه امتحان کن: چند کلمه از یک زبان دیگر، یک حرکت ورزشی یا یک دستور ساده.',min:10,xp:40},
+ {id:'h1',v:'kindness',lvl:1,title:'یک سپاس مشخص',short:'به یک نفر بگو دقیقاً برای چه کاری ممنونی.',why:'سپاس مشخص هم برای گوینده و هم برای شنونده معنا دارد.',text:'به یک نفر بگو دقیقاً برای چه کاری از او ممنونی. مشخص و کوتاه.',min:5,xp:40},
+ {id:'h2',v:'kindness',lvl:2,title:'یک کار کوچک برای خودت',short:'کاری کن که فقط برای حال خودت است.',why:'مهربانی با خودت، پایه‌ی مهربانی پایدار با دیگران است.',text:'یک کار کوچک انجام بده که فقط برای حال خودت است و «باید» نیست. مثلاً یک چای آرام یا یک آهنگ دوست‌داشتنی.',min:5,xp:40},
+ {id:'h3',v:'kindness',lvl:3,title:'یک پیام دلگرم‌کننده',short:'به کسی که خسته است پیام کوتاهی بنویس.',why:'یک جمله‌ی صمیمی گاهی روز کسی را عوض می‌کند.',text:'به کسی که این روزها خسته یا سرش شلوغ است، یک پیام کوتاه و صمیمی بنویس.',min:5,xp:40}
+];
+var SMALLS={
+ courage:{title:'ترجیحت را فقط بنویس',text:'روی کاغذ یا در یادداشت گوشی بنویس: «من ترجیح می‌دهم...» و جمله را کامل کن. لازم نیست به کسی بگویی.',min:2},
+ calm:{title:'سه نفس عمیق',text:'همین الان سه نفس عمیق و آهسته بکش. همین کافی است.',min:2},
+ curiosity:{title:'سی ثانیه نگاه کردن',text:'یک چیز اطرافت را سی ثانیه واقعاً نگاه کن، انگار اولین بار است که می‌بینی.',min:2},
+ kindness:{title:'یک جمله برای خودت',text:'یک جمله‌ی مهربان به خودت بگو، همان‌طور که به یک دوست می‌گفتی.',min:2}
+};
+function smallDef(v){var s=SMALLS[v];return {id:'s_'+v,v:v,lvl:0,title:s.title,short:s.title,why:'',text:s.text,min:s.min,xp:20,small:true};}
+var TAGS=[['😮','غافلگیر شدم'],['💪','از خودم راضی‌ام'],['😌','راحت‌تر بود'],['😬','سخت بود'],['💡','چیز تازه‌ای فهمیدم']];
+var OUTS=[['easier','راحت‌تر از چیزی بود که فکر می‌کردم'],['same','تقریباً همان‌طور که فکر می‌کردم'],['harder','سخت‌تر بود'],['cant','اصلاً نتوانستم انجامش بدهم']];
+var EMPTY={routines:[],mission:null,micro:null,reflection:null};
+
+/* ---------- helpers ---------- */
+function fa(n){return Math.round(n).toLocaleString('fa-IR',{useGrouping:false});}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function pad(n){return String(n).padStart(2,'0');}
+function keyOf(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());}
+function toDate(k){var p=k.split('-').map(Number);return new Date(p[0],p[1]-1,p[2]);}
+function today(){return keyOf(new Date());}
+function off(k,n){var p=k.split('-').map(Number);return keyOf(new Date(p[0],p[1]-1,p[2]+n));}
+function diff(a,b){return Math.round((toDate(b)-toDate(a))/864e5);}
+function fmtDate(k,withDay){
+  try{return toDate(k).toLocaleDateString('fa-IR-u-ca-persian',withDay?{weekday:'long',day:'numeric',month:'long'}:{day:'numeric',month:'long'});}catch(e){return k;}
+}
+function greeting(){
+  var h=new Date().getHours();
+  return h<5?'شب بخیر':h<12?'صبح بخیر':h<16?'ظهر بخیر':h<19?'عصر بخیر':'شب بخیر';
+}
+
+/* ---------- state ---------- */
+function fresh(){
+  return {v:1,elixir:0,virtues:{courage:0,calm:0,curiosity:0,kindness:0},
+    routines:[{id:'r1',icon:'📖',title:'۳ صفحه کتاب',xp:10},{id:'r2',icon:'🚶',title:'۱۵ دقیقه پیاده‌روی',xp:15},{id:'r3',icon:'✍️',title:'۳ خط شکرگزاری',xp:10}],
+    days:{},updatedAt:0};
+}
+function norm(r){
+  var s=fresh();
+  try{
+    r=JSON.parse(JSON.stringify(r));
+    if(typeof r.elixir==='number')s.elixir=r.elixir;
+    ORDER.forEach(function(v){if(r.virtues&&typeof r.virtues[v]==='number')s.virtues[v]=r.virtues[v];});
+    if(Array.isArray(r.routines))s.routines=r.routines;
+    if(r.days&&typeof r.days==='object')s.days=r.days;
+    if(typeof r.updatedAt==='number')s.updatedAt=r.updatedAt;
+  }catch(e){}
+  return s;
+}
+var S=fresh();
+try{var raw=localStorage.getItem(LS);if(raw)S=norm(JSON.parse(raw));}catch(e){}
+var ui={tab:'home',micro:false,edit:false,addTitle:'',addXp:10,reset:0,draftText:'',draftTags:[],bump:false};
+var mode='checking',ref=null,saving=false,dirty=false,timer=null;
+
+function dayOf(k){if(!S.days[k])S.days[k]={routines:[],mission:null,micro:null,reflection:null};return S.days[k];}
+function activeDay(k){var d=S.days[k];if(!d)return false;return d.routines.length>0||!!d.micro||!!(d.mission&&d.mission.outcome);}
+function virtLevel(v){var x=S.virtues[v];return x>=200?3:x>=80?2:1;}
+function todayVirtue(k){var p=k.split('-').map(Number);return ORDER[Math.floor(Date.UTC(p[0],p[1]-1,p[2])/864e5)%4];}
+function pickMission(k){
+  var v=todayVirtue(k),l=virtLevel(v);
+  var list=MISSIONS.filter(function(m){return m.v===v&&m.lvl<=l;});
+  return list[list.length-1];
+}
+function missionDef(k){
+  var d=S.days[k];
+  if(d&&d.mission){
+    if(d.mission.small)return smallDef(d.mission.v);
+    var f=MISSIONS.filter(function(x){return x.id===d.mission.id;})[0];
+    if(f)return f;
+  }
+  return pickMission(k);
+}
+function addElixir(n,v){
+  S.elixir=Math.max(0,S.elixir+n);
+  if(v)S.virtues[v]=Math.max(0,(S.virtues[v]||0)+n);
+  if(n>0)ui.bump=true;
+}
+function pop(n){
+  var el=document.createElement('div');el.className='pop';el.textContent='+'+fa(n)+' اکسیر';
+  document.body.appendChild(el);setTimeout(function(){el.remove();},1500);
+}
+function flame(){
+  var k=today(),n=0,miss=0,i=activeDay(k)?0:1;
+  for(;i<4000;i++){
+    if(activeDay(off(k,-i))){n++;miss=0;}else{miss++;if(miss>=2)break;}
+  }
+  return n;
+}
+function weekSteps(){
+  var k=today(),t=0;
+  for(var i=0;i<7;i++){var d=S.days[off(k,-i)];if(d)t+=d.routines.length+(d.mission&&d.mission.real?1:0)+(d.micro?1:0);}
+  return t;
+}
+function lastActive(){
+  var k=today(),best=null;
+  Object.keys(S.days).forEach(function(x){if(x<k&&activeDay(x)&&(!best||x>best))best=x;});
+  return best;
+}
+function homeState(){
+  var k=today(),d=S.days[k]||EMPTY,m=d.mission;
+  var rDone=S.routines.filter(function(r){return d.routines.indexOf(r.id)>=0;}).length;
+  var real=!!(m&&m.real),touched=activeDay(k);
+  var total=1+S.routines.length,done=rDone+(real?1:0);
+  if(real&&rDone===S.routines.length)return {t:'🌟 امروز جهان تو کمی روشن‌تر شد.',s:''};
+  if(!touched){
+    var la=lastActive();
+    if(la&&diff(la,k)>=3)return {t:'برگشتی. همین کافی است.',s:'لازم نیست چیزی را جبران کنی.'};
+    return {t:'روز هنوز شروع نشده.',s:'یک قدم کوچک کافی است.'};
+  }
+  if(real)return {t:'🧪 یک تجربه واقعی ثبت شد.',s:''};
+  if(done/total>=0.5)return {t:'✨ امروز خوب پیش رفتی.',s:'یک قدم دیگر مانده.'};
+  return {t:'یک قدم برداشته شد.',s:'هر قدم حساب است.'};
+}
+
+/* ---------- persistence ---------- */
+function touch(){
+  S.updatedAt=Date.now();
+  try{localStorage.setItem(LS,JSON.stringify(S));}catch(e){}
+  clearTimeout(timer);timer=setTimeout(flush,700);
+}
+function flush(){
+  if(!ref)return;
+  if(saving){dirty=true;return;}
+  saving=true;
+  var body=JSON.parse(JSON.stringify(S));
+  ref.set(body).then(function(){mode='account';}).catch(function(){mode='local';}).then(function(){
+    saving=false;
+    if(dirty){dirty=false;flush();}
+  });
+}
+function initCloud(){
+  mode='local';return Promise.resolve();
+  return Promise.all([window.claude.use('user'),window.claude.use('db')]).then(function(r){
+    var user=r[0],db=r[1];
+    if(!user||!db){mode='local';return;}
+    return user.id().then(function(id){
+      if(!id){mode='local';return;}
+      ref=db.doc('data/users/'+id+'/app');
+      return ref.get().then(function(snap){
+        if(snap.exists){
+          var rec=snap.data()||{};
+          if((rec.updatedAt||0)>S.updatedAt){
+            S=norm(rec);
+            try{localStorage.setItem(LS,JSON.stringify(S));}catch(e){}
+          }else if(S.updatedAt>(rec.updatedAt||0)){flush();}
+        }else if(S.updatedAt){flush();}
+        mode='account';
+      });
+    });
+  }).catch(function(){mode='local';});
+}
+
+/* ---------- views ---------- */
+var IC={
+  home:'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+  mission:'<path d="M5 21V4m0 0h11l-2 4 2 4H5"/>',
+  mirror:'<circle cx="12" cy="9" r="6"/><path d="M12 15v6M9 21h6"/>',
+  world:'<path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14z"/><path d="M5 19l7-7"/>'
+};
+function topbar(){
+  var step=100,p=(S.elixir%step)/step*100;
+  return '<div class="top"><div class="brand"><b>کیمیاگری</b><small>'+esc(fmtDate(today(),true))+'</small></div>'+
+  '<div class="vial'+(ui.bump?' bump':'')+'" aria-label="مخزن اکسیر"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v5l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/></svg>'+
+  '<div><div class="n">'+fa(S.elixir)+'</div><div class="l">اکسیر</div></div><div class="bar" title="تا صدگان بعدی"><i style="width:'+p+'%"></i></div></div></div>';
+}
+function navbar(){
+  var tabs=[['home','خانه'],['mission','مأموریت'],['mirror','آینه من'],['world','جهان من']];
+  return '<nav class="nav" aria-label="بخش‌ها"><div class="in">'+tabs.map(function(t){
+    return '<button class="tab" data-act="tab" data-tab="'+t[0]+'"'+(ui.tab===t[0]?' aria-current="page"':'')+'><svg viewBox="0 0 24 24">'+IC[t[0]]+'</svg>'+t[1]+'</button>';
+  }).join('')+'</div></nav>';
+}
+function rnd(i,s){var t=((i+1)*2654435761+s*40503)>>>0;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296;}
+function worldSVG(){
+  var act=Object.keys(S.days).filter(activeDay).sort();
+  var n=Math.min(act.length,90);
+  var refl=Object.keys(S.days).filter(function(k){return S.days[k].reflection;}).length;
+  var g=Math.min(1,S.elixir/600),th=40+100*g,tw=6+8*g,rx=36+84*g,ry=28+58*g,cx=200,base=214,cy=base-th-ry*0.35;
+  var s='<svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="درخت جهان تو با '+fa(act.length)+' برگ">';
+  s+='<rect width="400" height="240" style="fill:var(--sky)"/>';
+  s+='<path d="M0 205 Q100 185 200 200 T400 196 V240 H0Z" style="fill:var(--ground)"/>';
+  s+='<path d="M200 220 L200 '+(base-th)+'" style="stroke:var(--bark)" stroke-width="'+tw.toFixed(1)+'" stroke-linecap="round" fill="none"/>';
+  if(n===0){
+    var ty=base-th;
+    s+='<ellipse cx="190" cy="'+(ty-4)+'" rx="12" ry="6" transform="rotate(-25 190 '+(ty-4)+')" style="fill:var(--leaf)"/>';
+    s+='<ellipse cx="210" cy="'+(ty-4)+'" rx="12" ry="6" transform="rotate(25 210 '+(ty-4)+')" style="fill:var(--leaf)"/>';
+  }
+  for(var i=0;i<n;i++){
+    var r=Math.sqrt(rnd(i,1)),a=rnd(i,2)*6.2832;
+    var x=cx+rx*r*Math.cos(a),y=cy+ry*r*Math.sin(a),lr=5+rnd(i,3)*3,op=0.55+rnd(i,4)*0.4;
+    s+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+lr.toFixed(1)+'" opacity="'+op.toFixed(2)+'" style="fill:var(--leaf)"/>';
+    if(i===n-1&&act[act.length-1]===today()){
+      s+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+(lr+4).toFixed(1)+'" fill="none" stroke-width="2" style="stroke:var(--elixir)"/>';
+    }
+  }
+  var m=Math.min(refl,24);
+  for(var j=0;j<m;j++){
+    s+='<circle class="ff" cx="'+(30+rnd(j,5)*340).toFixed(1)+'" cy="'+(30+rnd(j,6)*150).toFixed(1)+'" r="2.8" style="fill:var(--elixir);animation-delay:'+(rnd(j,7)*3).toFixed(1)+'s"/>';
+  }
+  return s+'</svg>';
+}
+function worldMsg(){
+  return activeDay(today())?'🌳 امروز یک برگ تازه به جهان تو اضافه شد.':'جهان تو منتظر است. هر روزی که قدمی برداری، یک برگ می‌شود.';
+}
+function routinesHTML(d){
+  var h='<div class="rows">'+S.routines.map(function(r){
+    var on=d.routines.indexOf(r.id)>=0;
+    return '<div style="display:flex;align-items:stretch"><button class="row'+(on?' done':'')+'" data-act="routine" data-id="'+esc(r.id)+'" aria-pressed="'+on+'">'+
+      '<span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg></span><span class="ic">'+esc(r.icon)+'</span><span class="tx">'+esc(r.title)+'</span><span class="xp">+'+fa(r.xp)+'</span></button>'+
+      (ui.edit?'<button class="del" data-act="delRoutine" data-id="'+esc(r.id)+'" aria-label="حذف '+esc(r.title)+'">×</button>':'')+'</div>';
+  }).join('')+'</div>';
+  if(!S.routines.length)h='<p class="note">هنوز روتینی نداری. با «ویرایش» یکی اضافه کن.</p>';
+  if(ui.edit){
+    h+='<div class="add"><input id="newTitle" type="text" placeholder="روتین تازه، مثلاً ۱۰ دقیقه کشش" value="'+esc(ui.addTitle)+'" maxlength="60" aria-label="عنوان روتین">'+
+      '<select id="newXp" aria-label="اکسیر">'+[5,10,15,20].map(function(x){return '<option value="'+x+'"'+(ui.addXp===x?' selected':'')+'>+'+fa(x)+'</option>';}).join('')+'</select>'+
+      '<button class="btn btn-primary" data-act="addRoutine">افزودن</button></div>';
+  }
+  return h;
+}
+function renderHome(){
+  var k=today(),d=S.days[k]||EMPTY,def=missionDef(k),m=d.mission,st=homeState(),v=VIRT[def.v];
+  var btn;
+  if(!m)btn='<button class="btn btn-hero btn-block" data-act="toMission">شروع مأموریت</button>';
+  else if(m.stage==='done')btn='<button class="btn btn-hero btn-block" data-act="toMission">'+(m.real?'✓ ثبت شد':'امروز کافی بود')+'</button>';
+  else btn='<button class="btn btn-hero btn-block" data-act="toMission">ادامه مأموریت</button>';
+  var microHTML='';
+  if(!activeDay(k)&&!ui.micro){
+    microHTML='<button class="btn btn-quiet btn-block" data-act="microOpen">🌱 امروز فقط همین را انجام می‌دهم</button>';
+  }
+  if(ui.micro&&!activeDay(k)){
+    var sm=smallDef(def.v);
+    microHTML='<div class="panel soft fade"><div class="note">فقط همین، حدود '+fa(sm.min)+' دقیقه</div><div class="big">'+esc(sm.title)+'</div><p>'+esc(sm.text)+'</p>'+
+      '<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-primary" data-act="microDone">انجام شد · +'+fa(15)+'</button><button class="btn btn-quiet" data-act="microClose">بعداً</button></div></div>';
+  }
+  var gr=flame(),ws=weekSteps();
+  return '<section class="greet fade"><h1 class="hi">'+greeting()+' 🌱</h1><p class="st">'+esc(st.t)+'</p>'+(st.s?'<p class="sub">'+esc(st.s)+'</p>':'')+'</section>'+
+  '<section class="hero fade"><div class="lab"><span>🎯 مأموریت امروز</span><span>'+v.icon+' '+v.name+' · سطح '+fa(virtLevel(def.v))+'</span></div>'+
+  '<h2>«'+esc(def.short)+'»</h2><div class="meta"><span>⏱ حدود '+fa(def.min)+' دقیقه</span><span>🧪 +'+fa(def.xp)+' اکسیر</span></div>'+btn+'</section>'+
+  microHTML+
+  '<section class="sec"><div class="sec-h"><h3>🌱 امروز برای خودم</h3><button class="link" data-act="editRoutines">'+(ui.edit?'تمام':'ویرایش')+'</button></div>'+routinesHTML(d)+'</section>'+
+  '<section class="sec"><div class="stats"><div class="flame"><b>'+fa(gr)+'</b><small>🔥 شعله، روز</small></div><div><b>'+fa(S.elixir)+'</b><small>🧪 اکسیر</small></div><div><b>'+fa(ws)+'</b><small>🌱 قدم واقعی این هفته</small></div></div>'+
+  '<p class="note">یک روز استراحت، شعله را خاموش نمی‌کند. شعله فقط وقتی کم می‌شود که دو روز پیاپی نیامده باشی.</p></section>'+
+  '<section class="sec"><div class="sec-h"><h3>جهان من</h3></div><div class="world">'+worldSVG()+'</div><p>'+esc(worldMsg())+'</p><button class="btn btn-quiet" data-act="toWorld">ورود به جهان</button></section>';
+}
+function renderMission(){
+  var k=today(),d=S.days[k]||EMPTY,def=missionDef(k),m=d.mission,v=VIRT[def.v];
+  var head='<div class="note">'+v.icon+' '+v.name+' · سطح '+fa(virtLevel(def.v))+'</div>';
+  if(!m){
+    return '<section class="hero fade">'+head.replace('note','')+'<h2>'+esc(def.title)+'</h2><p>'+esc(def.text)+'</p>'+
+      '<div class="why"><b>چرا این مأموریت؟</b>'+esc(def.why)+'</div><div class="meta"><span>⏱ حدود '+fa(def.min)+' دقیقه</span><span>🧪 +'+fa(def.xp)+' اکسیر</span></div>'+
+      '<button class="btn btn-hero btn-block" data-act="start">شروع مأموریت</button></section>'+
+      '<p class="note">مأموریت در دنیای واقعی انجام می‌شود، نه روی صفحه. هر وقت آماده بودی شروع کن.</p>';
+  }
+  var s=m.stage;
+  if(s==='active'){
+    return '<section class="panel fade"><h2>گوشی را کنار بگذار. 🌱</h2><p>مأموریتت در دنیای واقعی اتفاق می‌افتد. وقتی انجامش دادی، برگرد.</p>'+
+      '<p class="quote">'+esc(def.text)+'</p><button class="btn btn-primary btn-block" data-act="returned">برگشتم</button></section>';
+  }
+  if(s==='outcome'){
+    return '<section class="panel fade"><h2>چه اتفاقی افتاد؟</h2><div class="opts">'+OUTS.map(function(o){
+      return '<button class="opt" data-act="outcome" data-o="'+o[0]+'"><span class="dot"></span>'+o[1]+'</button>';
+    }).join('')+'</div></section>';
+  }
+  if(s==='cant'){
+    var sm=smallDef(m.v);
+    return '<section class="panel soft fade"><h2>اشکالی ندارد.</h2><p>شاید این قدم برای امروز بزرگ بوده. می‌توانیم آن را کوچک‌تر کنیم.</p><p class="note">برای صداقتت ۱۰ اکسیر ثبت شد. امتیازت صفر نمی‌شود.</p></section>'+
+      '<section class="panel fade"><div class="note">مأموریت کوچک‌تر، حدود '+fa(sm.min)+' دقیقه</div><div class="big">'+esc(sm.title)+'</div><p>'+esc(sm.text)+'</p>'+
+      '<button class="btn btn-primary btn-block" data-act="smaller">قبول است · +'+fa(sm.xp)+'</button><button class="btn btn-quiet btn-block" data-act="enough">برای امروز کافی است</button></section>';
+  }
+  if(s==='reflect'){
+    var tags=TAGS.map(function(t,i){var on=ui.draftTags.indexOf(i)>=0;return '<button class="chip'+(on?' on':'')+'" data-act="tag" data-i="'+i+'" aria-pressed="'+on+'">'+t[0]+' '+t[1]+'</button>';}).join('');
+    return '<section class="panel fade"><h2>🪞 چه چیزی فهمیدی؟</h2><p>بعد از انجام این کار، چه چیزی درباره خودت فهمیدی؟</p>'+
+      '<textarea id="reflText" placeholder="هر چه به ذهنت می‌رسد، کوتاه یا بلند..." aria-label="بازتاب">'+esc(ui.draftText)+'</textarea>'+
+      '<div class="chips">'+tags+'</div>'+
+      '<button class="btn btn-primary btn-block" data-act="saveRefl">ثبت تجربه</button><button class="link" data-act="skipRefl">فعلاً نه</button>'+
+      '<p class="note">بازتاب اختیاری است و ۱۰ اکسیر جداگانه دارد. اکسیر مأموریت پیش‌تر ثبت شده است.</p></section>';
+  }
+  /* done */
+  var gains=(m.log||[]).map(function(g){return '<div class="gain"><span>'+esc(g.label)+'</span><b>+'+fa(g.n)+'</b></div>';}).join('');
+  var msg=m.real?'این تجربه حالا بخشی از داستان توست.':'همین‌که آمدی و صادقانه گفتی، کافی است.';
+  return '<section class="panel soft fade"><h2>'+(m.real?'🧪 یک تجربه واقعی ثبت شد.':'امروز کافی بود.')+'</h2><p class="big">'+msg+'</p></section>'+
+    (gains?'<section class="sec">'+gains+'</section>':'')+
+    '<p class="note">مأموریت بعدی فردا منتظر توست. می‌توانی به خانه برگردی و روتین‌هایت را ببینی.</p><button class="btn btn-quiet" data-act="tab" data-tab="home">بازگشت به خانه</button>';
+}
+function mirrorData(){
+  var recs=[],tags={},refl=[];
+  Object.keys(S.days).sort().reverse().forEach(function(k){
+    var d=S.days[k];
+    if(d.mission&&d.mission.first)recs.push({k:k,v:d.mission.v,first:d.mission.first,real:d.mission.real});
+    if(d.reflection){
+      refl.push({k:k,r:d.reflection});
+      (d.reflection.tags||[]).forEach(function(i){tags[i]=(tags[i]||0)+1;});
+    }
+  });
+  return {recs:recs,tags:tags,refl:refl};
+}
+function insights(md){
+  var out=[],r=md.recs,n=r.length;
+  if(n<3)return ['هنوز داده کافی نیست. بعد از سه مأموریت، الگوها این‌جا ظاهر می‌شوند.'];
+  var easy=r.filter(function(x){return x.first==='easier'||x.first==='same';}).length;
+  var hard=r.filter(function(x){return x.first==='harder'||x.first==='cant';}).length;
+  if(easy/n>=0.6)out.push('در بیشتر مأموریت‌ها، کار راحت‌تر از انتظارت یا مثل انتظارت بود. گاهی ذهن قدم‌ها را بزرگ‌تر از واقعیت نشان می‌دهد.');
+  else if(hard/n>=0.5)out.push('بیشتر قدم‌ها برایت سنگین بوده. در روزهایی که انرژی کم است، «امروز فقط همین» می‌تواند نقطه‌ی شروع باشد.');
+  var best=null,worst=null;
+  ORDER.forEach(function(v){
+    var a=r.filter(function(x){return x.v===v;});
+    if(a.length<2)return;
+    var ratio=a.filter(function(x){return x.first==='easier'||x.first==='same';}).length/a.length;
+    if(!best||ratio>best.ratio)best={v:v,ratio:ratio};
+    if(!worst||ratio<worst.ratio)worst={v:v,ratio:ratio};
+  });
+  if(best&&worst&&best.v!==worst.v&&best.ratio>worst.ratio){
+    out.push('در «'+VIRT[best.v].name+'» راحت‌تر پیش می‌روی و «'+VIRT[worst.v].name+'» هنوز بیشتر از بقیه چالش دارد.');
+  }
+  var top=null;Object.keys(md.tags).forEach(function(i){if(md.tags[i]>=2&&(!top||md.tags[i]>md.tags[top]))top=i;});
+  if(top!==null)out.push('پرتکرارترین حس بعد از مأموریت‌هایت: «'+TAGS[top][1]+'» ('+fa(md.tags[top])+' بار).');
+  if(!out.length)out.push('تا اینجا الگوی روشنی دیده نمی‌شود. با ثبت تجربه‌های بیشتر، تصویر دقیق‌تر می‌شود.');
+  return out;
+}
+function renderMirror(){
+  var md=mirrorData(),real=md.recs.filter(function(x){return x.real;}).length;
+  var days=Object.keys(S.days).filter(activeDay).length;
+  var vb=ORDER.map(function(v){
+    var xp=S.virtues[v],l=virtLevel(v),lo=l===1?0:l===2?80:200,hi=l===1?80:l===2?200:null;
+    var pct=hi?Math.min(100,(xp-lo)/(hi-lo)*100):100;
+    return '<div class="vbar"><div class="h"><span>'+VIRT[v].icon+' '+VIRT[v].name+'</span><span class="note">سطح '+fa(l)+'</span></div><div class="t"><i style="width:'+pct+'%"></i></div></div>';
+  }).join('');
+  var chips=Object.keys(md.tags).map(function(i){return '<span class="chip static">'+TAGS[i][0]+' '+TAGS[i][1]+' · '+fa(md.tags[i])+'</span>';}).join('');
+  var rl=md.refl.slice(0,8).map(function(x){
+    var d=S.days[x.k],t=(x.r.tags||[]).map(function(i){return TAGS[i][0];}).join(' ');
+    return '<div class="refl"><small>'+esc(fmtDate(x.k))+' '+t+'</small>'+(x.r.text?'<p>'+esc(x.r.text)+'</p>':'')+'</div>';
+  }).join('');
+  var store=mode==='account'?'تجربه‌هایت روی حساب خودت ذخیره می‌شود و فقط خودت آن‌ها را می‌بینی.':mode==='local'?'تجربه‌هایت فقط روی همین گوشی ذخیره می‌شود. اگر اپ را حذف کنی یا داده‌هایش را پاک کنی، این اطلاعات هم از بین می‌رود.':'در حال بررسی محل ذخیره‌سازی...';
+  var reset=ui.reset?'<div class="panel fade"><p>همه‌ی تجربه‌ها، اکسیر و روتین‌ها پاک می‌شوند و قابل بازگشت نیستند.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-primary" data-act="resetGo">پاک شود</button><button class="btn btn-quiet" data-act="resetNo">انصراف</button></div></div>':'<button class="link" data-act="resetAsk">شروع از صفر</button>';
+  return '<section class="greet fade"><h1 class="hi">آینه من</h1><p class="sub">تجربه‌های واقعی تو، به‌صورت الگوهای ساده. فقط برای خودت.</p></section>'+
+    '<section class="sec"><div class="stats"><div><b>'+fa(md.refl.length)+'</b><small>بازتاب ثبت‌شده</small></div><div><b>'+fa(real)+'</b><small>مأموریت واقعی</small></div><div><b>'+fa(days)+'</b><small>روز حضور</small></div></div></section>'+
+    '<section class="sec"><div class="sec-h"><h3>الگوهای تا اینجا</h3></div><ul class="ins">'+insights(md).map(function(t){return '<li>'+esc(t)+'</li>';}).join('')+'</ul><p class="note">این‌ها مشاهده‌های ساده از ثبت‌های خودت هستند، نه تشخیص یا ارزیابی روان‌شناختی.</p></section>'+
+    '<section class="sec"><div class="sec-h"><h3>فضیلت‌ها</h3></div><div style="display:flex;flex-direction:column;gap:14px">'+vb+'</div></section>'+
+    (chips?'<section class="sec"><div class="sec-h"><h3>حس‌های پس از مأموریت</h3></div><div class="chips">'+chips+'</div></section>':'')+
+    '<section class="sec"><div class="sec-h"><h3>آخرین بازتاب‌ها</h3></div>'+(rl||'<p class="note">هنوز بازتابی ثبت نکرده‌ای. بعد از یک مأموریت، بنویس چه چیزی فهمیدی.</p>')+'</section>'+
+    '<section class="sec"><p class="note">'+store+'</p>'+reset+'</section>';
+}
+function renderWorld(){
+  var act=Object.keys(S.days).filter(activeDay).length;
+  var refl=Object.keys(S.days).filter(function(k){return S.days[k].reflection;}).length;
+  return '<section class="greet fade"><h1 class="hi">جهان من</h1><p class="st">'+esc(worldMsg())+'</p></section>'+
+    '<div class="world fade">'+worldSVG()+'</div>'+
+    '<section class="stats"><div class="flame"><b>'+fa(act)+'</b><small>برگ، هر روز حضور</small></div><div><b>'+fa(refl)+'</b><small>شب‌تاب، هر بازتاب</small></div><div><b>'+fa(S.elixir)+'</b><small>اکسیر، رشد درخت</small></div></section>'+
+    '<p class="note">درخت با اکسیرت بزرگ می‌شود. غیبت چیزی از آن کم نمی‌کند.</p>';
+}
+function render(){
+  var body=ui.tab==='home'?renderHome():ui.tab==='mission'?renderMission():ui.tab==='mirror'?renderMirror():renderWorld();
+  app.innerHTML=topbar()+body+navbar();
+  ui.bump=false;
+}
+
+/* ---------- actions ---------- */
+function award(m,n,label){
+  addElixir(n,m.v);m.xp=(m.xp||0)+n;m.log=m.log||[];m.log.push({n:n,label:label});pop(n);
+}
+var ACTS={
+  tab:function(el){ui.tab=el.dataset.tab;window.scrollTo(0,0);},
+  toMission:function(){ui.tab='mission';window.scrollTo(0,0);},
+  toWorld:function(){ui.tab='world';window.scrollTo(0,0);},
+  routine:function(el){
+    var d=dayOf(today()),id=el.dataset.id,r=S.routines.filter(function(x){return x.id===id;})[0];
+    if(!r)return;
+    var i=d.routines.indexOf(id);
+    if(i>=0){d.routines.splice(i,1);addElixir(-r.xp);}
+    else{d.routines.push(id);addElixir(r.xp);pop(r.xp);}
+  },
+  editRoutines:function(){ui.edit=!ui.edit;},
+  addRoutine:function(){
+    var t=ui.addTitle.trim();if(!t)return false;
+    S.routines.push({id:'r'+Date.now().toString(36),icon:'✦',title:t,xp:ui.addXp});ui.addTitle='';
+  },
+  delRoutine:function(el){S.routines=S.routines.filter(function(r){return r.id!==el.dataset.id;});},
+  microOpen:function(){ui.micro=true;return false;},
+  microClose:function(){ui.micro=false;return false;},
+  microDone:function(){
+    var k=today(),d=dayOf(k),v=todayVirtue(k);
+    d.micro={v:v,t:Date.now()};addElixir(15,v);pop(15);ui.micro=false;
+  },
+  start:function(){
+    var k=today(),d=dayOf(k),def=pickMission(k);
+    d.mission={id:def.id,v:def.v,small:false,stage:'active',outcome:null,first:null,real:false,xp:0,log:[]};
+  },
+  returned:function(){dayOf(today()).mission.stage='outcome';},
+  outcome:function(el){
+    var o=el.dataset.o,m=dayOf(today()).mission,def=missionDef(today());
+    m.outcome=o;if(!m.first)m.first=o;
+    if(o==='cant'){
+      if(!m.small){award(m,10,'برای صداقت');m.stage='cant';}
+      else m.stage='done';
+    }else{
+      m.real=true;award(m,def.xp,m.small?'مأموریت کوچک':'مأموریت');
+      ui.draftText='';ui.draftTags=[];m.stage='reflect';
+    }
+  },
+  smaller:function(){var m=dayOf(today()).mission;m.small=true;m.outcome=null;m.stage='active';},
+  enough:function(){dayOf(today()).mission.stage='done';},
+  tag:function(el){
+    var i=Number(el.dataset.i),p=ui.draftTags.indexOf(i);
+    if(p>=0)ui.draftTags.splice(p,1);else ui.draftTags.push(i);
+    return false;
+  },
+  saveRefl:function(){
+    var d=dayOf(today()),m=d.mission,txt=ui.draftText.trim();
+    if(!txt&&!ui.draftTags.length){m.stage='done';return;}
+    d.reflection={text:txt,tags:ui.draftTags.slice(),mid:m.id,v:m.v,t:Date.now()};
+    award(m,10,'بازتاب');m.stage='done';
+  },
+  skipRefl:function(){dayOf(today()).mission.stage='done';},
+  resetAsk:function(){ui.reset=1;return false;},
+  resetNo:function(){ui.reset=0;return false;},
+  resetGo:function(){S=fresh();ui.reset=0;ui.micro=false;ui.edit=false;}
+};
+app.addEventListener('click',function(e){
+  var el=e.target.closest('[data-act]');if(!el)return;
+  var fn=ACTS[el.dataset.act];if(!fn)return;
+  var r=fn(el);
+  if(r!==false&&['microOpen','microClose','editRoutines','tag','resetAsk','resetNo','tab','toMission','toWorld'].indexOf(el.dataset.act)<0)touch();
+  var y=window.scrollY;render();
+  if(['tab','toMission','toWorld'].indexOf(el.dataset.act)<0)window.scrollTo(0,y);
+});
+app.addEventListener('input',function(e){
+  if(e.target.id==='reflText')ui.draftText=e.target.value;
+  else if(e.target.id==='newTitle')ui.addTitle=e.target.value;
+});
+app.addEventListener('change',function(e){if(e.target.id==='newXp')ui.addXp=Number(e.target.value);});
+
+render();
+initCloud().then(function(){render();});
+})();
+</script>
+
+</body>
+</html>
